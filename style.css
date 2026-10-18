@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+}
+
+/* MENU */
+nav {
+    background: linear-gradient(to right, skyblue, hotpink);
+    padding: 25px;
+    text-align: center;
+     animation: fadeDown 1.5s;
+}
+
+nav a {
+    color: black;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: white;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* BANNER */
+.banner {
+    background: url("1.jpg") no-repeat center/cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    animation: zoom 2s ease;
+}
+
+.banner h1 {
+    background: rgba(0,0,0,0.3);
+    font-size: 1000;
+    padding: 20px 30px;
+    border-bottom: 10px;
+    border-radius: 20px;
+    animation: fadeDown 1.5s;
+}
+
+/* SECTION */
+section {
+    padding: 50px;
+    animation: fadeUp 1.2s ease;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: skyblue ;
+    font-size: 100;
+
+}
+
+/* CARD */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card p {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background: #0066cc;
+    color: white;
+}
+
+/* FORM */
+form {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    background: #0066cc;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 100px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeDown {
+    from {opacity: 0; transform: translateY(-30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes zoom {
+    from {transform: scale(1.1);}
+    to {transform: scale(1);}
+}
+/* ===== SẢN PHẨM DU LỊCH ===== */
+.product {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: 0.4s;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.product:hover img {
+    transform: scale(1.1);
+}
+
+.product-content {
+    padding: 15px;
+    text-align: center;
+}
+
+.price {
+    color: #e74c3c;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.buy-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #0066cc;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #004999;
+    transform: scale(1.1);
+}
+
+.amthuc {
+    width: 85%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.mien {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 50px 0 25px;
+    color: #d35400;
+}
+
+/* danh sách món ăn */
+.ds-monan {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* từng món */
+.monan {
+    width: 220px;
+    transition: transform 0.4s;
+}
+
+.monan img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+/* animation hover */
+.monan:hover img {
+    transform: scale(1.1) rotate(1deg);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+.monan p {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+h3{
+    text-align: center;
+}
+/* VÙNG MIỀN */
+.vungmien {
+    width: 85%;
+    margin: 60px auto;
+}
+
+.vung {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 70px;
+}
+
+.vung.reverse {
+    flex-direction: row-reverse;
+}
+
+.vung img {
+    width: 45%;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: transform 0.4s;
+}
+
+.vung img:hover {
+    transform: scale(1.05);
+}
+
+.vung-content {
+    width: 55%;
+}
+
+.vung-content h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #d35400;
+}
+
+.vung-content p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+/* TOUR */
+.tour-section {
+    width: 85%;
+    margin: 60px auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 50px;
+}
+
+.tour-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 70px;
+}
+
+.tour-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.tour-card img {
+    width: 45%;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: transform 0.4s;
+}
+
+.tour-card img:hover {
+    transform: scale(1.05);
+}
+
+.tour-info {
+    width: 55%;
+}
+
+.tour-info h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #d35400;
+}
+
+.tour-info p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.price {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0a6cf1;
+}
+/* ===== LOGO + NAVBAR ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, skyblue, hotpink);
+    padding: 15px 40px;
+    animation: fadeDown 1.5s;
+}
+
+/* LOGO */
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+/* MENU */
+.menu a {
+    color: black;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: white;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
