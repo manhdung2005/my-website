@@ -260,6 +260,8 @@ footer {
 
 .monan img {
     width: 100%;
+    height: 160px;
+    object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     transition: transform 0.4s, box-shadow 0.4s;
@@ -328,13 +330,55 @@ h3{
 
 .vung-content h2 {
     font-size: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     color: #d35400;
 }
 
-.vung-content p {
+.vung-intro {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 16px;
+}
+
+.vung-subtitle {
     font-size: 18px;
-    line-height: 1.7;
+    color: #0066cc;
+    margin: 14px 0 8px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.vung-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 14px;
+}
+
+.vung-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.vung-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: #d35400;
+    font-size: 13px;
+}
+
+.vung-list strong {
+    color: #111;
+}
+
+.vung-content p {
+    font-size: 16px;
+    line-height: 1.6;
 }
 /* TOUR */
 .tour-section {
