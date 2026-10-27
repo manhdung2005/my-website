@@ -581,11 +581,61 @@
             }
         }
 
+        /* FOOTER */
         footer {
-            background: black;
-            color: white;
+            background: #1c2833;
+            color: #ddd;
+            padding: 40px 20px 20px;
+            margin-top: 40px;
+            border-top: 3px solid skyblue;
+            text-align: left;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-box h3 {
+            color: #ffffff;
+            font-size: 17px;
+            margin-bottom: 14px;
+        }
+
+        .footer-box p {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 6px;
+        }
+
+        .footer-box strong {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding: 100px
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            margin-top: 30px;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
 
         @media(max-width:650px) {
@@ -700,7 +750,6 @@
                 <h3>Du Lịch Miền Bắc</h3>
                 <p>Website cung cấp tour du lịch, dịch vụ đặt phòng, sản phẩm du lịch chất lượng cao trên toàn quốc.</p>
             </div>
-            <hr><br>
 
             <div class="footer-box">
                 <h3>Liên hệ</h3>
@@ -709,7 +758,6 @@
                 <p>📍 Địa chỉ: TP. Hà Nội</p>
                 <p>⏰ Thời gian làm việc: 8:00 – 22:00</p>
             </div>
-            <hr><br>
 
             <div class="footer-box">
                 <h3>Hỗ trợ khách hàng</h3>
