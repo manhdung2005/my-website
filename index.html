@@ -36,6 +36,18 @@
 
     <div class="grid">
         <div class="card">
+            <div class="video-picker" data-video-key="son-la">
+                <video controls playsinline preload="metadata" hidden>
+                    Trình duyệt của bạn không hỗ trợ phát video.
+                </video>
+                <iframe class="video-embed" title="Video giới thiệu Sơn La" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe>
+                <p class="video-upload-message" aria-live="polite">Dán link YouTube, TikTok hoặc link trực tiếp đến video Sơn La.</p>
+                <div class="video-url-editor">
+                    <input class="video-url-input" type="url" placeholder="Dán link YouTube hoặc TikTok" aria-label="Đường link video Sơn La">
+                    <button class="video-url-submit" type="button">Phát video</button>
+                </div>
+                <button class="video-replace-button" type="button" aria-label="Thay video Sơn La" title="Thay video" hidden>↻</button>
+            </div>
             <a href="vungmien.html">
                 <img src="https://booking.muongthanh.com/images/news/2025/03/original/thietkeanh-web_1742279994.jpg">
             </a>
@@ -44,6 +56,18 @@
         </div>
 
         <div class="card">
+            <div class="video-picker" data-video-key="hoa-binh">
+                <video controls playsinline preload="metadata" hidden>
+                    Trình duyệt của bạn không hỗ trợ phát video.
+                </video>
+                <iframe class="video-embed" title="Video giới thiệu Hòa Bình" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe>
+                <p class="video-upload-message" aria-live="polite">Dán link YouTube, TikTok hoặc link trực tiếp đến video Hòa Bình.</p>
+                <div class="video-url-editor">
+                    <input class="video-url-input" type="url" placeholder="Dán link YouTube hoặc TikTok" aria-label="Đường link video Hòa Bình">
+                    <button class="video-url-submit" type="button">Phát video</button>
+                </div>
+                <button class="video-replace-button" type="button" aria-label="Thay video Hòa Bình" title="Thay video" hidden>↻</button>
+            </div>
             <a href="vungmien.html">
                 <img src="https://media.vietnamplus.vn/images/wU9keeg-MVtM86KQbMalHptMH7mEOWljy-CYtlzFMDLL7L3TnYcvrFrkrkqJ3r78YHr0xZ8yTmNi0L0Qs2vzZg/3108Hoabinh5.jpg.webp">
             </a>
@@ -52,6 +76,18 @@
         </div>
 
         <div class="card">
+            <div class="video-picker" data-video-key="ha-long">
+                <video controls playsinline preload="metadata" hidden>
+                    Trình duyệt của bạn không hỗ trợ phát video.
+                </video>
+                <iframe class="video-embed" title="Video giới thiệu Hạ Long" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe>
+                <p class="video-upload-message" aria-live="polite">Dán link YouTube, TikTok hoặc link trực tiếp đến video Hạ Long.</p>
+                <div class="video-url-editor">
+                    <input class="video-url-input" type="url" placeholder="Dán link YouTube hoặc TikTok" aria-label="Đường link video Hạ Long">
+                        <button class="video-url-submit" type="button">Phát video</button>
+                </div>
+                <button class="video-replace-button" type="button" aria-label="Thay video Hạ Long" title="Thay video" hidden>↻</button>
+            </div>
             <a href="vungmien.html">
                 <img src="halong.jpg" alt="Hạ Long">
             </a>
@@ -90,6 +126,146 @@
         © 2026 Du Lịch Miền Bắc | All Rights Reserved
     </div>
 </footer>
+
+<script>
+    // Dán link YouTube, TikTok hoặc link video trực tiếp vào từng dòng.
+    const VIDEO_LINKS = {
+        "son-la": "https://youtu.be/ZNUzl_vi87A?si=xKAnwAnK7qhBoJYV",
+        "hoa-binh": "https://youtu.be/feQMUMgtabo?si=MIxPQY4P9SoXUl-w",
+        "ha-long": "https://youtu.be/hZMWMu0pp9k?si=lwMYFOQWg04YcnW3"
+    };
+
+    document.querySelectorAll(".video-picker").forEach((picker) => {
+        const videoInput = picker.querySelector(".video-url-input");
+        const submitButton = picker.querySelector(".video-url-submit");
+        const replaceButton = picker.querySelector(".video-replace-button");
+        const video = picker.querySelector("video");
+        const embed = picker.querySelector(".video-embed");
+        const videoMessage = picker.querySelector(".video-upload-message");
+        const storageKey = `destination-video:${picker.dataset.videoKey}`;
+
+        const playVideo = (url) => {
+            const hostname = url.hostname.toLowerCase();
+            let embedUrl;
+            let embedType;
+
+            if (hostname === "youtu.be" || ["youtube.com", "www.youtube.com", "m.youtube.com", "youtube-nocookie.com", "www.youtube-nocookie.com"].includes(hostname)) {
+                const youtubeId = hostname === "youtu.be"
+                    ? url.pathname.split("/").filter(Boolean)[0]
+                    : url.pathname === "/watch"
+                        ? url.searchParams.get("v")
+                        : url.pathname.match(/^\/(?:embed|shorts|live)\/([^/]+)/)?.[1];
+
+                if (!youtubeId || !/^[\w-]{11}$/.test(youtubeId)) {
+                    videoMessage.textContent = "Link YouTube không hợp lệ. Hãy dùng link video hoặc Shorts.";
+                    return false;
+                }
+
+                embedUrl = `https://www.youtube.com/embed/${youtubeId}`;
+                embedType = "youtube";
+            } else if (["tiktok.com", "www.tiktok.com", "m.tiktok.com"].includes(hostname)) {
+                const tiktokId = url.pathname.match(/^\/@[^/]+\/video\/(\d+)/)?.[1]
+                    || url.pathname.match(/^\/embed\/v2\/(\d+)/)?.[1];
+
+                if (!tiktokId) {
+                    videoMessage.textContent = "Hãy dán link TikTok đầy đủ của video (dạng tiktok.com/@tên/video/id), không phải link rút gọn.";
+                    return false;
+                }
+
+                embedUrl = `https://www.tiktok.com/player/v1/${tiktokId}?controls=1`;
+                embedType = "tiktok";
+            }
+
+            video.pause();
+            video.hidden = true;
+            video.removeAttribute("src");
+            video.load();
+            embed.hidden = true;
+            embed.removeAttribute("src");
+            embed.classList.toggle("tiktok-embed", embedType === "tiktok");
+
+            if (embedUrl) {
+                embed.src = embedUrl;
+                embed.hidden = false;
+            } else {
+                video.src = url.href;
+                video.hidden = false;
+            }
+
+            picker.classList.add("has-video");
+            picker.classList.remove("is-editing", "video-error", "storage-warning");
+            videoMessage.textContent = "";
+            replaceButton.hidden = false;
+            return true;
+        };
+
+        const setVideoFromInput = () => {
+            const value = videoInput.value.trim();
+            if (!value) {
+                videoMessage.textContent = "Vui lòng nhập đường link video.";
+                return;
+            }
+
+            let url;
+            try {
+                url = new URL(value, window.location.href);
+            } catch {
+                videoMessage.textContent = "Đường link video không hợp lệ.";
+                return;
+            }
+
+            if (url.protocol !== "http:" && url.protocol !== "https:") {
+                videoMessage.textContent = "Link video phải bắt đầu bằng http:// hoặc https://.";
+                return;
+            }
+
+            videoInput.value = url.href;
+            if (!playVideo(url)) return;
+
+            let storageWarning = false;
+            try {
+                localStorage.setItem(storageKey, url.href);
+            } catch {
+                storageWarning = true;
+            }
+
+            if (storageWarning) {
+                picker.classList.add("storage-warning");
+                videoMessage.textContent = "Video đang phát nhưng trình duyệt không thể lưu link để dùng lại.";
+            }
+        };
+
+        submitButton.addEventListener("click", setVideoFromInput);
+        videoInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") setVideoFromInput();
+        });
+        replaceButton.addEventListener("click", () => {
+            picker.classList.add("is-editing");
+            videoInput.focus();
+        });
+        video.addEventListener("error", () => {
+            if (video.hidden) return;
+            picker.classList.add("video-error");
+            videoMessage.textContent = "Không phát được link trực tiếp này. Hãy thử dùng link video MP4/WebM hoặc link YouTube/TikTok.";
+        });
+
+        try {
+            const configuredUrl = VIDEO_LINKS[picker.dataset.videoKey].trim();
+            const savedUrl = configuredUrl || localStorage.getItem(storageKey);
+            if (savedUrl) {
+                videoInput.value = savedUrl;
+                try {
+                    const url = new URL(savedUrl);
+                    if (url.protocol === "http:" || url.protocol === "https:") playVideo(url);
+                } catch {
+                    localStorage.removeItem(storageKey);
+                }
+            }
+        } catch {
+            videoMessage.textContent = "Trình duyệt không cho phép đọc link video đã lưu.";
+        }
+    });
+</script>
 
 </body>
 </html>

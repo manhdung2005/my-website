@@ -745,42 +745,42 @@
         };
 
         const tbody = document.getElementById('tourRows');
-        const search = document.getElementById('search');
-        const destination = document.getElementById('destination');
-        const sort = document.getElementById('sort');
-        const count = document.getElementById('count');
-        const empty = document.getElementById('empty');
-        function priceNumber(v) { return Number((v || '').replace(/[^0-9]/g, '')) || 0; }
-        function escapeHtml(v) { return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
-        function render() {
-            const q = search.value.trim().toLocaleLowerCase('vi');
-            const dest = destination.value;
-            let list = tours.filter(t => (t.title + ' ' + t.route + ' ' + t.region).toLocaleLowerCase('vi').includes(q) && (!dest || t.region.toLocaleLowerCase('vi') === dest));
-            if (sort.value === 'price-asc') list.sort((a, b) => priceNumber(a.price) - priceNumber(b.price));
-            if (sort.value === 'price-desc') list.sort((a, b) => priceNumber(b.price) - priceNumber(a.price));
-            if (sort.value === 'rating-desc') list.sort((a, b) => Number(b.rating) - Number(a.rating));
-            tbody.innerHTML = list.map(t => `<tr><td><img class="tour-img" src="${t.image}" alt="${escapeHtml(t.title)}" loading="lazy"></td><td><a class="tour-title" href="?tour=${t.id}">${escapeHtml(t.title)}</a><div class="promo">${escapeHtml(t.region)}${t.promo ? ' · ' + escapeHtml(t.promo) : ''}</div></td><td><div class="route">${escapeHtml(t.route)}</div></td><td><span class="rating">★ ${escapeHtml(t.rating)}</span><div class="reviews">${escapeHtml(t.reviews)} đánh giá</div></td><td><span class="duration">${escapeHtml(t.duration)}</span></td><td>${t.oldPrice ? `<div class="old-price">${escapeHtml(t.oldPrice)}</div>` : ''}<div class="price">${escapeHtml(t.price)}</div></td><td><a class="btn" href="?tour=${t.id}">Xem tour →</a></td></tr>`).join('');
-            count.textContent = `Hiển thị ${list.length} / ${tours.length} tour`;
-            empty.style.display = list.length ? 'none' : 'block';
-        }
-        search.addEventListener('input', render); destination.addEventListener('change', render); sort.addEventListener('change', render);
-        function renderDetail() {
-            const id = new URLSearchParams(window.location.search).get('tour');
-            if (!id) return;
-            const t = tours.find(x => x.id === id);
-            if (!t) return;
-            const d = tourDetails[t.id];
-            document.getElementById('listPage').hidden = true;
-            document.querySelector('.hero').hidden = true;
-            document.getElementById('detailPage').hidden = false;
-            const detail = document.getElementById('detailPage');
-            const listItems = items => items.map(x => `<li>${escapeHtml(x)}</li>`).join('');
-            const itinerary = d.itinerary.map((day, i) => `<article class="day-card"><div class="day-number">${i + 1}</div><div><div class="day-label">${escapeHtml(day[0])}</div><h3>${escapeHtml(day[1])}</h3><p>${escapeHtml(day[2])}</p></div></article>`).join('');
-            detail.innerHTML = `<a class="btn-secondary" href="${window.location.pathname}">← Quay lại danh sách tour</a><article class="detail-card" style="margin-top:16px"><div class="cover-wrap"><img class="detail-cover" src="${t.image}" alt="${escapeHtml(t.title)}"><div class="cover-caption"><span>HÀNH TRÌNH ĐÁNG NHỚ</span><strong>${escapeHtml(t.duration)} · ${escapeHtml(t.region)}</strong></div></div><div class="detail-body"><div class="top-note">GIỚI THIỆU TOUR · MÃ TOUR ${escapeHtml(t.id)}</div><h1 class="detail-title">${escapeHtml(t.title)}</h1><p>${escapeHtml(t.description)}</p><div class="detail-summary"><span>★ ${escapeHtml(t.rating)} / 10</span><span>${escapeHtml(t.reviews)} đánh giá minh họa</span><span>${escapeHtml(t.duration)}</span><span>Khởi hành: ${escapeHtml(t.departure)}</span></div>${t.promo ? `<div class="promo">${escapeHtml(t.promo)}</div>` : ''}<div class="detail-meta"><div class="meta-box"><div class="meta-label">Giá tham khảo từ</div><div class="meta-value" style="color:var(--red)">${escapeHtml(t.price)}</div>${t.oldPrice ? `<div class="old-price" style="margin-top:6px">${escapeHtml(t.oldPrice)}</div>` : ''}<div class="meta-label" style="margin-top:7px">Giá giả định phục vụ bài tập</div></div><div class="meta-box"><div class="meta-label">Thời lượng</div><div class="meta-value">${escapeHtml(t.duration)}</div></div><div class="meta-box"><div class="meta-label">Khu vực</div><div class="meta-value">${escapeHtml(t.region)}</div></div><div class="meta-box"><div class="meta-label">Mã tour</div><div class="meta-value">${escapeHtml(t.id)}</div></div></div><section class="detail-section"><h2>Điểm nổi bật của hành trình</h2><ul class="detail-list">${listItems(d.highlights)}</ul></section><section class="detail-section"><h2>Tuyến điểm</h2><p class="route-pill">${escapeHtml(t.route)}</p></section><section class="detail-section"><h2>Lịch trình tham khảo</h2><div class="itinerary">${itinerary}</div></section><section class="detail-section"><h2>Giá tour bao gồm</h2><ul class="detail-list">${listItems(d.includes)}</ul></section><section class="detail-section"><h2>Giá tour chưa bao gồm</h2><ul class="detail-list">${listItems(d.excludes)}</ul></section><div class="detail-actions"><a class="btn-secondary" href="${window.location.pathname}">← Xem các tour khác</a></div><p class="detail-note" style="margin-top:18px">Nội dung, lịch trình và giá trong website này là thông tin giả định để minh họa cách xây dựng website tour; cần xác minh thực tế trước khi sử dụng thương mại.</p></div></article>`;
-            document.title = t.title + ' | Khám Phá Việt';
-        }
-        render();
-        renderDetail();
+            const search = document.getElementById('search');
+            const destination = document.getElementById('destination');
+            const sort = document.getElementById('sort');
+            const count = document.getElementById('count');
+            const empty = document.getElementById('empty');
+            function priceNumber(v) { return Number((v || '').replace(/[^0-9]/g, '')) || 0; }
+            function escapeHtml(v) { return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+            function render() {
+                const q = search.value.trim().toLocaleLowerCase('vi');
+                const dest = destination.value;
+                let list = tours.filter(t => (t.title + ' ' + t.route + ' ' + t.region).toLocaleLowerCase('vi').includes(q) && (!dest || t.region.toLocaleLowerCase('vi') === dest));
+                if (sort.value === 'price-asc') list.sort((a, b) => priceNumber(a.price) - priceNumber(b.price));
+                if (sort.value === 'price-desc') list.sort((a, b) => priceNumber(b.price) - priceNumber(a.price));
+                if (sort.value === 'rating-desc') list.sort((a, b) => Number(b.rating) - Number(a.rating));
+                tbody.innerHTML = list.map(t => `<tr><td><img class="tour-img" src="${t.image}" alt="${escapeHtml(t.title)}" loading="lazy"></td><td><a class="tour-title" href="?tour=${t.id}">${escapeHtml(t.title)}</a><div class="promo">${escapeHtml(t.region)}${t.promo ? ' · ' + escapeHtml(t.promo) : ''}</div></td><td><div class="route">${escapeHtml(t.route)}</div></td><td><span class="rating">★ ${escapeHtml(t.rating)}</span><div class="reviews">${escapeHtml(t.reviews)} đánh giá</div></td><td><span class="duration">${escapeHtml(t.duration)}</span></td><td>${t.oldPrice ? `<div class="old-price">${escapeHtml(t.oldPrice)}</div>` : ''}<div class="price">${escapeHtml(t.price)}</div></td><td><a class="btn" href="?tour=${t.id}">Xem tour →</a></td></tr>`).join('');
+                count.textContent = `Hiển thị ${list.length} / ${tours.length} tour`;
+                empty.style.display = list.length ? 'none' : 'block';
+            }
+            search.addEventListener('input', render); destination.addEventListener('change', render); sort.addEventListener('change', render);
+            function renderDetail() {
+                const id = new URLSearchParams(window.location.search).get('tour');
+                if (!id) return;
+                const t = tours.find(x => x.id === id);
+                if (!t) return;
+                const d = tourDetails[t.id];
+                document.getElementById('listPage').hidden = true;
+                document.querySelector('.hero').hidden = true;
+                document.getElementById('detailPage').hidden = false;
+                const detail = document.getElementById('detailPage');
+                const listItems = items => items.map(x => `<li>${escapeHtml(x)}</li>`).join('');
+                const itinerary = d.itinerary.map((day, i) => `<article class="day-card"><div class="day-number">${i + 1}</div><div><div class="day-label">${escapeHtml(day[0])}</div><h3>${escapeHtml(day[1])}</h3><p>${escapeHtml(day[2])}</p></div></article>`).join('');
+                detail.innerHTML = `<a class="btn-secondary" href="${window.location.pathname}">← Quay lại danh sách tour</a><article class="detail-card" style="margin-top:16px"><div class="cover-wrap"><img class="detail-cover" src="${t.image}" alt="${escapeHtml(t.title)}"><div class="cover-caption"><span>HÀNH TRÌNH ĐÁNG NHỚ</span><strong>${escapeHtml(t.duration)} · ${escapeHtml(t.region)}</strong></div></div><div class="detail-body"><div class="top-note">GIỚI THIỆU TOUR · MÃ TOUR ${escapeHtml(t.id)}</div><h1 class="detail-title">${escapeHtml(t.title)}</h1><p>${escapeHtml(t.description)}</p><div class="detail-summary"><span>★ ${escapeHtml(t.rating)} / 10</span><span>${escapeHtml(t.reviews)} đánh giá minh họa</span><span>${escapeHtml(t.duration)}</span><span>Khởi hành: ${escapeHtml(t.departure)}</span></div>${t.promo ? `<div class="promo">${escapeHtml(t.promo)}</div>` : ''}<div class="detail-meta"><div class="meta-box"><div class="meta-label">Giá tham khảo từ</div><div class="meta-value" style="color:var(--red)">${escapeHtml(t.price)}</div>${t.oldPrice ? `<div class="old-price" style="margin-top:6px">${escapeHtml(t.oldPrice)}</div>` : ''}<div class="meta-label" style="margin-top:7px">Giá giả định phục vụ bài tập</div></div><div class="meta-box"><div class="meta-label">Thời lượng</div><div class="meta-value">${escapeHtml(t.duration)}</div></div><div class="meta-box"><div class="meta-label">Khu vực</div><div class="meta-value">${escapeHtml(t.region)}</div></div><div class="meta-box"><div class="meta-label">Mã tour</div><div class="meta-value">${escapeHtml(t.id)}</div></div></div><section class="detail-section"><h2>Điểm nổi bật của hành trình</h2><ul class="detail-list">${listItems(d.highlights)}</ul></section><section class="detail-section"><h2>Tuyến điểm</h2><p class="route-pill">${escapeHtml(t.route)}</p></section><section class="detail-section"><h2>Lịch trình tham khảo</h2><div class="itinerary">${itinerary}</div></section><section class="detail-section"><h2>Giá tour bao gồm</h2><ul class="detail-list">${listItems(d.includes)}</ul></section><section class="detail-section"><h2>Giá tour chưa bao gồm</h2><ul class="detail-list">${listItems(d.excludes)}</ul></section><div class="detail-actions"><a class="btn-secondary" href="${window.location.pathname}">← Xem các tour khác</a></div><p class="detail-note" style="margin-top:18px">Nội dung, lịch trình và giá trong website này là thông tin giả định để minh họa cách xây dựng website tour; cần xác minh thực tế trước khi sử dụng thương mại.</p></div></article>`;
+                document.title = t.title + ' | Khám Phá Việt';
+            }
+            render();
+            renderDetail();
     </script>
 </body>
 

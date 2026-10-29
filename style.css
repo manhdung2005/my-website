@@ -319,6 +319,120 @@ h3{
     object-fit: cover;
 }
 
+.video-picker {
+    position: relative;
+    align-items: flex-start;
+}
+
+.vung-images.video-picker,
+.card .video-picker {
+    display: flex;
+    flex-direction: column;
+}
+
+.video-picker video {
+    width: 100%;
+    max-height: 400px;
+    border-radius: 18px;
+    background: #111;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.video-picker .video-embed {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 12px;
+    background: #111;
+}
+
+.video-picker .video-embed.tiktok-embed {
+    width: min(100%, 325px);
+    aspect-ratio: 9 / 16;
+    align-self: center;
+}
+
+.card .video-picker {
+    gap: 8px;
+    padding: 12px;
+}
+
+.card .video-picker video {
+    max-height: 180px;
+}
+
+.video-url-editor {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+}
+
+.video-url-input {
+    flex: 1;
+    min-width: 0;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.video-url-submit {
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 6px;
+    background: #d35400;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.video-picker.has-video:not(.is-editing) .video-url-editor {
+    display: none;
+}
+
+.video-picker.has-video:not(.is-editing) .video-replace-button {
+    position: absolute;
+    z-index: 1;
+    top: 12px;
+    right: 12px;
+    display: grid;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    font-size: 21px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.video-picker.is-editing .video-replace-button {
+    display: none;
+}
+
+.video-picker.has-video:not(.is-editing) .video-replace-button:hover {
+    background: #d35400;
+}
+
+.video-upload-message {
+    margin: 0;
+    color: #444;
+    overflow-wrap: anywhere;
+}
+
+.video-picker.has-video:not(.video-error):not(.storage-warning) .video-upload-message {
+    display: none;
+}
+
+.video-picker:focus-within .video-url-input,
+.video-picker:focus-within .video-url-submit,
+.video-picker:focus-within .video-replace-button {
+    outline: 3px solid #0066cc;
+    outline-offset: 3px;
+}
+
 
 .vung img:hover {
     transform: scale(1.05);
