@@ -1,110 +1,241 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Ẩm Thực Việt Nam</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Khám phá ẩm thực Sơn La, Hòa Bình và Hạ Long qua món ngon, hình ảnh và video miền Bắc.">
+    <title>Ẩm Thực Miền Bắc | Sơn La, Hòa Bình, Hạ Long</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar food-navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="100.jpg" alt="">
+                <span>Du Lịch Miền Bắc</span>
+            </a>
+        </div>
+        <div class="menu">
+            <a href="index.html">Trang chủ</a>
+            <a href="vungmien.html">Vùng miền</a>
+            <a href="amthuc.html" aria-current="page">Ẩm thực</a>
+            <a href="dattour.html">Đặt tour</a>
+            <a href="sanpham.html">Sản phẩm</a>
+        </div>
+    </nav>
 
-<nav class="navbar">
-    <div class="logo">
-        <a href="index.html">
-            <img src="100.jpg">
-            <span>Du Lịch Miền Bắc</span>
-        </a>
-    </div>
+    <main class="food-page">
+        <header class="food-hero">
+            <p class="food-eyebrow">HƯƠNG VỊ MIỀN BẮC</p>
+            <h1>Thưởng thức<br><span>Sơn La · Hòa Bình · Hạ Long</span></h1>
+            <p class="food-hero-copy">Cùng khám phá món ngon núi rừng Tây Bắc và hương vị biển Quảng Ninh qua những hình ảnh, câu chuyện và video ẩm thực.</p>
+            <a class="food-hero-link" href="#son-la">Khám phá món ngon <span aria-hidden="true">↓</span></a>
+            <div class="food-hero-stamp" aria-hidden="true">NGON<br>MIỀN<br>BẮC</div>
+        </header>
 
-    <div class="menu">
-        <a href="index.html">Trang chủ</a>
-        <a href="vungmien.html">Vùng miền</a>
-        <a href="amthuc.html">Ẩm thực</a>
-        <a href="dattour.html">Đặt tour</a>
-        <a href="sanpham.html">Sản phẩm</a>
-    </div>
-</nav>
+        <nav class="food-region-nav" aria-label="Chọn địa danh ẩm thực">
+            <a href="#son-la"><span>01</span> Sơn La</a>
+            <a href="#hoa-binh"><span>02</span> Hòa Bình</a>
+            <a href="#ha-long"><span>03</span> Hạ Long</a>
+        </nav>
 
-<section class="amthuc">
+        <section class="food-region" id="son-la" aria-labelledby="son-la-title">
+            <div class="food-region-heading">
+                <p class="food-kicker">01 / TÂY BẮC</p>
+                <h2 id="son-la-title">Sơn La — đậm đà hương vị núi rừng</h2>
+                <p>Thưởng thức những món ngon mang dấu ấn núi rừng và văn hóa ẩm thực đặc sắc của Sơn La.</p>
+            </div>
+            <div class="food-grid">
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá thịt trâu gác bếp Sơn La">
+                        <img src="https://booking.muongthanh.com/upload_images/images/H%60/dac-san-son-la-trau-gac-bep.jpg" alt="Thịt trâu gác bếp Sơn La" loading="lazy">
+                        <span class="food-image-tag">Sơn La</span>
+                    </a>
+                    <div class="food-card-copy"><span>Đặc sản vùng cao</span><h3>Thịt trâu gác bếp</h3><p>Thịt trâu hun khói, thơm mắc khén và đậm vị núi rừng.</p></div>
+                </article>
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá táo mèo Sơn La">
+                        <img src="https://booking.muongthanh.com/upload_images/images/H%60/dac-san-son-la-tao-meo-son-la.jpg" alt="Táo mèo Sơn La" loading="lazy">
+                        <span class="food-image-tag">Sơn La</span>
+                    </a>
+                    <div class="food-card-copy"><span>Quà của núi rừng</span><h3>Táo mèo</h3><p>Thức quả vùng cao có vị chua dịu, thường được dùng làm quà.</p></div>
+                </article>
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá nộm da trâu Sơn La">
+                        <img src="https://booking.muongthanh.com/upload_images/images/H%60/dac-san-son-la-nom-da-trau.jpg" alt="Nộm da trâu Sơn La" loading="lazy">
+                        <span class="food-image-tag">Sơn La</span>
+                    </a>
+                    <div class="food-card-copy"><span>Món ngon bản địa</span><h3>Nộm da trâu</h3><p>Da trâu giòn sần sật, trộn cùng gia vị và rau thơm đặc trưng.</p></div>
+                </article>
+            </div>
+            <aside class="food-video-panel">
+                <div class="food-video-intro">
+                    <span class="food-video-icon" aria-hidden="true">▶</span>
+                    <div><h3>Video ẩm thực Sơn La</h3><p>Xem video giới thiệu đặc sản Sơn La hoặc chọn video của bạn từ máy tính.</p></div>
+                </div>
+                <div class="food-video-actions">
+                    <label class="food-upload-button">Chọn video từ máy
+                        <input class="food-video-input" type="file" accept="video/*" aria-label="Chọn video ẩm thực Sơn La từ máy tính">
+                    </label>
+                    <a class="food-source-link" href="https://www.youtube.com/results?search_query=am+thuc+dac+san+Son+La" target="_blank" rel="noopener noreferrer">Video về Sơn La <span aria-hidden="true">↗</span></a>
+                </div>
+                <p class="food-video-message" aria-live="polite">Video chọn từ máy chỉ được xem trước trên thiết bị này, không tải lên máy chủ.</p>
+                <video class="food-local-video" controls playsinline preload="metadata" hidden aria-label="Video ẩm thực Sơn La được chọn"></video>
+            </aside>
+        </section>
 
-    <!-- MIỀN BẮC -->
-    <h2 class="mien">Ẩm Thực Sơn La</h2>
-     <div class="ds-monan" >
-        <div class="monan">
-            <a href="dattour.html"><img src="https://booking.muongthanh.com/upload_images/images/H%60/dac-san-son-la-trau-gac-bep.jpg"></a>
-            <p>Thịt trâu gác bếp</p>
-        </div>
-        <div class="monan">
-            <a href="dattour.html"><img src="https://booking.muongthanh.com/upload_images/images/H%60/dac-san-son-la-tao-meo-son-la.jpg"></a>
-            <p>Táo mèo Sơn La</p>
-        </div>
-        <div class="monan">
-            <a href="dattour.html"><img src="https://booking.muongthanh.com/upload_images/images/H%60/dac-san-son-la-nom-da-trau.jpg"></a>
-            <p>Nộm da trâu</p>
-        </div>
-     </div>
+        <section class="food-region food-region-warm" id="hoa-binh" aria-labelledby="hoa-binh-title">
+            <div class="food-region-heading">
+                <p class="food-kicker">02 / TÂY BẮC</p>
+                <h2 id="hoa-binh-title">Hòa Bình — mộc mạc vị núi, vị sông</h2>
+                <p>Cơm lam, cá nướng và những sản vật địa phương làm nên nét riêng của ẩm thực Hòa Bình.</p>
+            </div>
+            <div class="food-grid">
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá cơm lam Hòa Bình">
+                        <img src="https://maichauhideaway.com/Data/Sites/1/media/tin-tuc/%E1%BA%A3nh-b%C3%A0i-vi%E1%BA%BFt/t112024/dac-san-hoa-binh/dac-san-hoa-binh-1.jpg" alt="Cơm lam ống tre Hòa Bình" loading="lazy">
+                        <span class="food-image-tag">Hòa Bình</span>
+                    </a>
+                    <div class="food-card-copy"><span>Hương nếp nương</span><h3>Cơm lam ống tre</h3><p>Nếp dẻo thơm được nướng trong ống tre, ăn cùng muối vừng.</p></div>
+                </article>
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá cá nướng sông Đà">
+                        <img src="https://maichauhideaway.com/Data/Sites/1/media/tin-tuc/%E1%BA%A3nh-b%C3%A0i-vi%E1%BA%BFt/t112024/dac-san-hoa-binh/dac-san-hoa-binh-4.jpg" alt="Cá nướng sông Đà" loading="lazy">
+                        <span class="food-image-tag">Sông Đà</span>
+                    </a>
+                    <div class="food-card-copy"><span>Hương vị sông Đà</span><h3>Cá nướng</h3><p>Cá tươi tẩm gia vị, nướng vàng thơm trên than hồng.</p></div>
+                </article>
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá cam Cao Phong">
+                        <img src="https://maichauhideaway.com/Data/Sites/1/media/tin-tuc/%E1%BA%A3nh-b%C3%A0i-vi%E1%BA%BFt/t112024/dac-san-hoa-binh/dac-san-hoa-binh-5.jpg" alt="Cam Cao Phong Hòa Bình" loading="lazy">
+                        <span class="food-image-tag">Cao Phong</span>
+                    </a>
+                    <div class="food-card-copy"><span>Thức quả địa phương</span><h3>Cam Cao Phong</h3><p>Đặc sản nổi tiếng với hương thơm và vị ngọt dịu.</p></div>
+                </article>
+            </div>
+            <aside class="food-video-panel">
+                <div class="food-video-intro">
+                    <span class="food-video-icon" aria-hidden="true">▶</span>
+                    <div><h3>Video ẩm thực Hòa Bình</h3><p>Khám phá món ngon Hòa Bình hoặc chọn video của bạn từ máy tính.</p></div>
+                </div>
+                <div class="food-video-actions">
+                    <label class="food-upload-button">Chọn video từ máy
+                        <input class="food-video-input" type="file" accept="video/*" aria-label="Chọn video ẩm thực Hòa Bình từ máy tính">
+                    </label>
+                    <a class="food-source-link" href="https://www.youtube.com/results?search_query=am+thuc+dac+san+Hoa+Binh+Mai+Chau" target="_blank" rel="noopener noreferrer">Video về Hòa Bình <span aria-hidden="true">↗</span></a>
+                </div>
+                <p class="food-video-message" aria-live="polite">Video chọn từ máy chỉ được xem trước trên thiết bị này, không tải lên máy chủ.</p>
+                <video class="food-local-video" controls playsinline preload="metadata" hidden aria-label="Video ẩm thực Hòa Bình được chọn"></video>
+            </aside>
+        </section>
 
-    <!-- MIỀN TRUNG -->
-    <h2 class="mien">Ẩm Thực Hòa Bình </h2>
-    <div class="ds-monan">
-        <div class="monan">
-            <a href="dattour.html"><img src="https://maichauhideaway.com/Data/Sites/1/media/tin-tuc/%E1%BA%A3nh-b%C3%A0i-vi%E1%BA%BFt/t112024/dac-san-hoa-binh/dac-san-hoa-binh-1.jpg"></a>
-            <p>Cơm lam ống tre </p>
-        </div>
-        <div class="monan">
-            <a href="dattour.html"><img src="https://maichauhideaway.com/Data/Sites/1/media/tin-tuc/%E1%BA%A3nh-b%C3%A0i-vi%E1%BA%BFt/t112024/dac-san-hoa-binh/dac-san-hoa-binh-4.jpg"></a>
-            <p>Cá nướng sông Đà</p>
-        </div>
-        <div class="monan">
-            <a href="dattour.html"><img src="https://maichauhideaway.com/Data/Sites/1/media/tin-tuc/%E1%BA%A3nh-b%C3%A0i-vi%E1%BA%BFt/t112024/dac-san-hoa-binh/dac-san-hoa-binh-5.jpg"></a>
-            <p>Cam Cao Phong</p>
-        </div>
-    </div>
+        <section class="food-region" id="ha-long" aria-labelledby="ha-long-title">
+            <div class="food-region-heading">
+                <p class="food-kicker">03 / QUẢNG NINH</p>
+                <h2 id="ha-long-title">Hạ Long — vị ngon từ biển cả</h2>
+                <p>Hải sản tươi ngon và những món ăn trứ danh mang đến hương vị không thể nhầm lẫn của Hạ Long.</p>
+            </div>
+            <div class="food-grid">
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá chả mực Hạ Long">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Ch%E1%BA%A3_m%E1%BB%B1c.jpg" alt="Chả mực vàng ruộm" loading="lazy">
+                        <span class="food-image-tag">Hạ Long</span>
+                    </a>
+                    <div class="food-card-copy"><span>Món ngon trứ danh</span><h3>Chả mực giã tay</h3><p>Chả mực vàng thơm, giòn dai, đậm vị biển Quảng Ninh.</p></div>
+                </article>
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá bánh cuốn chả mực Hạ Long">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Banh-cuon-cha-muc-ha-long.jpg" alt="Bánh cuốn ăn cùng chả mực Hạ Long" loading="lazy">
+                        <span class="food-image-tag">Hạ Long</span>
+                    </a>
+                    <div class="food-card-copy"><span>Đặc sản phố biển</span><h3>Bánh cuốn chả mực</h3><p>Bánh cuốn mềm nóng ăn cùng chả mực giòn thơm.</p></div>
+                </article>
+                <article class="food-card">
+                    <a class="food-image-link" href="dattour.html" aria-label="Khám phá hàu nướng Hạ Long">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/H%C3%A0u_s%E1%BB%AFa_n%C6%B0%E1%BB%9Bng_ph%C3%B4_mai%2C_B%C3%ACnh_T%C3%A2n%2C_n%C4%83m_2020_%2819%29.jpg" alt="Hàu nướng phô mai" loading="lazy">
+                        <span class="food-image-tag">Hải sản</span>
+                    </a>
+                    <div class="food-card-copy"><span>Tươi ngon từ biển</span><h3>Hàu nướng</h3><p>Hàu tươi nướng nóng hổi, béo thơm hấp dẫn.</p></div>
+                </article>
+            </div>
+            <aside class="food-video-panel">
+                <div class="food-video-intro">
+                    <span class="food-video-icon" aria-hidden="true">▶</span>
+                    <div><h3>Video ẩm thực Hạ Long</h3><p>Xem video giới thiệu đặc sản biển Hạ Long hoặc chọn video của bạn từ máy tính.</p></div>
+                </div>
+                <div class="food-video-actions">
+                    <label class="food-upload-button">Chọn video từ máy
+                        <input class="food-video-input" type="file" accept="video/*" aria-label="Chọn video ẩm thực Hạ Long từ máy tính">
+                    </label>
+                    <a class="food-source-link" href="https://www.youtube.com/results?search_query=am+thuc+dac+san+Ha+Long+Quang+Ninh" target="_blank" rel="noopener noreferrer">Video về Hạ Long <span aria-hidden="true">↗</span></a>
+                </div>
+                <p class="food-video-message" aria-live="polite">Video chọn từ máy chỉ được xem trước trên thiết bị này, không tải lên máy chủ.</p>
+                <video class="food-local-video" controls playsinline preload="metadata" hidden aria-label="Video ẩm thực Hạ Long được chọn"></video>
+            </aside>
+        </section>
 
-    <!-- HẠ LONG -->
-    <h2 class="mien">Ẩm Thực Hạ Long</h2>
-    <div class="ds-monan">
-        <div class="monan">
-            <a href="dattour.html"><img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Ch%E1%BA%A3_m%E1%BB%B1c.jpg" alt="Chả mực giã tay"></a>
-            <p>Chả mực giã tay</p>
-        </div>
-        <div class="monan">
-            <a href="dattour.html"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Banh-cuon-cha-muc-ha-long.jpg" alt="Bánh cuốn chả mực"></a>
-            <p>Bánh cuốn chả mực</p>
-        </div>
-        <div class="monan">
-            <a href="dattour.html"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/H%C3%A0u_s%E1%BB%AFa_n%C6%B0%E1%BB%9Bng_ph%C3%B4_mai%2C_B%C3%ACnh_T%C3%A2n%2C_n%C4%83m_2020_%2819%29.jpg" alt="Hàu nướng mỡ hành"></a>
-            <p>Hàu nướng mỡ hành</p>
-        </div>
-    </div>
+        <p class="food-closing">Sơn La, Hòa Bình, Hạ Long — ba điểm đến, bao hương vị miền Bắc.</p>
+    </main>
 
-</section>
-<footer>
-    <div class="footer-container">
-        <div class="footer-box">
-            <h3>Du Lịch Miền Bắc</h3>
-            <p>Website cung cấp tour du lịch, dịch vụ đặt phòng, sản phẩm du lịch chất lượng cao trên toàn quốc.</p>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>Du Lịch Miền Bắc</h3>
+                <p>Website cung cấp tour du lịch, dịch vụ đặt phòng, sản phẩm du lịch chất lượng cao trên toàn quốc.</p>
+            </div>
+            <div class="footer-box">
+                <h3>Liên hệ</h3>
+                <p>📞 Hotline: <strong>038 906 3632</strong></p>
+                <p>📧 Email: duongmanhdung781@email.com</p>
+                <p>📍 Địa chỉ: TP. Hà Nội</p>
+                <p>⏰ Thời gian làm việc: 8:00 – 22:00</p>
+            </div>
+            <div class="footer-box">
+                <h3>Hỗ trợ khách hàng</h3>
+                <p>✔ Tư vấn tour miễn phí</p>
+                <p>✔ Hỗ trợ 24/7</p>
+                <p>✔ Thanh toán an toàn</p>
+                <p>✔ Hoàn tiền nếu không hài lòng</p>
+            </div>
         </div>
+        <div class="footer-bottom">© 2026 Du Lịch Miền Bắc | All Rights Reserved</div>
+    </footer>
 
-        <div class="footer-box">
-            <h3>Liên hệ</h3>
-            <p>📞 Hotline: <strong>038 906 3632</strong></p>
-            <p>📧 Email: duongmanhdung781@email.com</p>
-            <p>📍 Địa chỉ: TP. Hà Nội</p>
-            <p>⏰ Thời gian làm việc: 8:00 – 22:00</p>
-        </div>
+    <script>
+        document.querySelectorAll(".food-video-panel").forEach((panel) => {
+            const input = panel.querySelector(".food-video-input");
+            const video = panel.querySelector(".food-local-video");
+            const message = panel.querySelector(".food-video-message");
+            let objectUrl = "";
 
-        <div class="footer-box">
-            <h3>Hỗ trợ khách hàng</h3>
-            <p>✔ Tư vấn tour miễn phí</p>
-            <p>✔ Hỗ trợ 24/7</p>
-            <p>✔ Thanh toán an toàn</p>
-            <p>✔ Hoàn tiền nếu không hài lòng</p>
-        </div>
-    </div>
+            input.addEventListener("change", () => {
+                const file = input.files[0];
+                if (!file) return;
 
-    <div class="footer-bottom">
-        © 2026 Du Lịch Miền Bắc | All Rights Reserved
-    </div>
-</footer>
+                if (!file.type.startsWith("video/")) {
+                    message.textContent = "Tệp đã chọn không phải là video. Vui lòng chọn một tệp video khác.";
+                    input.value = "";
+                    return;
+                }
+
+                if (objectUrl) URL.revokeObjectURL(objectUrl);
+                objectUrl = URL.createObjectURL(file);
+                video.src = objectUrl;
+                video.hidden = false;
+                video.load();
+                message.textContent = `Đang xem trước: ${file.name}. Tệp chỉ nằm trên thiết bị này, chưa được tải lên máy chủ.`;
+            });
+
+            video.addEventListener("error", () => {
+                message.textContent = "Không thể phát tệp video này trên trình duyệt. Hãy thử chọn video MP4 hoặc WebM.";
+            });
+        });
+
+        window.addEventListener("beforeunload", () => {
+            document.querySelectorAll(".food-local-video").forEach((video) => {
+                if (video.src.startsWith("blob:")) URL.revokeObjectURL(video.src);
+            });
+        });
+    </script>
 </body>
 </html>
